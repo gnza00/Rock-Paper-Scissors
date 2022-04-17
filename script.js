@@ -19,8 +19,12 @@ function computerPlay() //Returns randomly either Rock, Paper or Scissors
 
 function playerSelection()
 {
-    let selection = prompt("Choose Wisely");
-    return selection.toLowerCase();
+    let selection = prompt("Choose Wisely").toLowerCase();
+    while(selection!="rock" && selection!="paper" && selection!="scissors")
+    {
+        selection = prompt("Wrong answer try again.").toLowerCase();
+    }
+    return selection;
 }
 function playRound()
 {
