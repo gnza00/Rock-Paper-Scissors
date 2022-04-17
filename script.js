@@ -1,4 +1,4 @@
-console.log("Welcome");
+console.log("--Welcome To Rock, Paper, Scissors--");
 
 function computerPlay() //Returns randomly either Rock, Paper or Scissors
 {
@@ -22,36 +22,79 @@ function playerSelection()
     let selection = prompt("Choose Wisely");
     return selection.toLowerCase();
 }
-function playRound(computerPlay,playerSelection)
+function playRound()
 {
-    let user=computerPlay(),computer=playerSelection();
+    let computer=computerPlay(),user=playerSelection();
+    
     if(user==computer)
     {
-        return "It's a tie!!";
+        console.log("It's a tie!!");
+        return 0;
     }
     if(user=='scissors'&&computer=='rock')
     {
-        return "You lost! :( ";
+        console.log("rock beats scissors You lost! :(");
+        return 2;
     }
     if(user=='scissors'&&computer=='paper')
     {
-        return "You won! :D ";
+        console.log("You won! :D ");
+        return 1;
     }
     if(user=='rock'&&computer=='paper')
     {
-        return "You lost! :( ";
+        console.log("Paper beats rock You lost! :( ");
+        return 2;
     }
     if(user=='rock'&&computer=='scissors')
     {
-        return "You won! :D ";
+        console.log("You won! :D ");
+        return 1;
     }
     if(user=='paper'&&computer=='scissors')
     {
-        return "You lost! :( ";
+        console.log("Scissors beats paper You lost! :( ");
+        return 2;
     }
     if(user=='paper'&&computer=='rock')
     {
-        return "You won! :D ";
+        console.log("You won! :D ");
+        return 1;
     }
 
 }
+
+
+function game()
+{
+    let roundResult; //0=tie , 1=win , 2=lose 
+    let winCounter=0, loseCounter=0;
+    for(let i=1;i<=5;i++)
+    {
+        roundResult=playRound();
+
+        if(roundResult==1)
+        { 
+            winCounter++; 
+        }else if(roundResult==2)
+        { 
+            loseCounter++; 
+        }else
+        {
+            i--;
+        }
+
+        console.log("Wins: "+winCounter+", Lost: "+loseCounter);
+    }
+
+    if(winCounter>loseCounter)
+    {
+        console.log("YOU WON!!!!!!!!:D");
+    }
+    else
+    {
+        console.log("YOU LOST :( cringe");
+    }
+}
+
+game();
